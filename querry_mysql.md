@@ -36,7 +36,7 @@ Result:
 <code>15:15:33	SELECT * FROM `courses` WHERE `year` = 1   AND `period` = "I semestre" LIMIT 0, 1000	286 row(s) returned	0.0025 sec / 0.0021 sec
 </code>
 
-## 5 selezionare tutti gli appelli d'esame che avvengono nel pomeriggio dopo le 14 del 20/06/2020
+## 5 Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio dopo le 14 del 20/06/2020
 
 SELECT *
 FROM `exams`
@@ -45,5 +45,15 @@ WHERE DATE(`date`) = '2020-06-20'
 
 Result: 
 <code>15:27:46	SELECT * FROM `exams` WHERE DATE(`date`) = '2020-06-20'   AND TIME(`hour`) > '14:00:00' LIMIT 0, 1000	21 row(s) returned	0.010 sec / 0.000026 sec
+</code>
+
+## 5 Selezionare tutti i corsi di laurea magistrale
+
+SELECT *
+FROM `degrees`
+WHERE `level` = "magistrale"
+
+Result: 
+<code>15:33:49	SELECT * FROM `degrees` WHERE `level` = "magistrale" LIMIT 0, 1000	38 row(s) returned	0.0014 sec / 0.000029 sec
 </code>
 
