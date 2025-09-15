@@ -95,3 +95,38 @@ Result:
 15:44:28	SELECT YEAR(`enrolment_date`) AS `anno_iscrizione`,        COUNT(*) AS `numero_iscritti` FROM `students` GROUP BY YEAR(`enrolment_date`) ORDER BY `anno_iscrizione` LIMIT 0, 1000	4 row(s) returned	0.0063 sec / 0.000012 sec
 
 </code>
+
+## 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+SELECT `office_address`, COUNT(*) AS `numero_insegnanti`
+FROM `teachers`
+GROUP BY `office_address`
+ORDER BY `numero_insegnanti` DESC;
+<code>
+
+'Rotonda Martinelli 309','9'
+'Borgo Elga 89','8'
+'Via Eusebio 167 Appartamento 28','6'
+'Rotonda Carmela 10 Piano 1','6'
+'Strada Vitali 8 Piano 0','5'
+'Contrada Amato 58 Piano 2','5'
+'Strada Kociss 997 Piano 8','5'
+'Via Mariano 48','4'
+'Borgo Elio 234 Piano 4','4'
+'Contrada Penelope 73','4'
+'Strada Neri 577','3'
+'Contrada Rita 5 Appartamento 71','3'
+'Piazza Demian 856 Appartamento 63','3'
+'Piazza Ferretti 619','3'
+'Borgo Martino 82 Appartamento 07','3'
+'Contrada Santoro 17 Appartamento 30','3'
+'Incrocio Marini 9','3'
+'Via Giacinto 11 Piano 8','3'
+'Strada Concetta 6','3'
+'Via Maika 491','3'
+'Strada Lombardi 855','3'
+'Piazza Pellegrino 613 Piano 8','2'
+'Incrocio Testa 142 Piano 7','2'
+'Rotonda Teseo 9','2'
+
+</code>
