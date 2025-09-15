@@ -64,3 +64,14 @@ FROM `departments`;
 Result: 
 <code>15:36:51	SELECT COUNT(*) AS `numero_dipartimenti` FROM `departments` LIMIT 0, 1000	1 row(s) returned	0.00031 sec / 0.0000060 sec
 </code>
+
+## 8 Quanti sono gli insegnanti che non hanno un numero di telefono? 
+
+SELECT COUNT(*) AS `insegnanti_senza_telefono`
+FROM `teachers`
+WHERE `phone` IS NULL 
+
+Result: 
+<code>15:39:16	SELECT COUNT(*) AS `insegnanti_senza_telefono` FROM `teachers` WHERE `phone` IS NULL LIMIT 0, 1000	1 row(s) returned	0.0051 sec / 0.000012 sec
+</code>
+
