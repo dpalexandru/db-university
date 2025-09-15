@@ -47,7 +47,7 @@ Result:
 <code>15:27:46	SELECT * FROM `exams` WHERE DATE(`date`) = '2020-06-20'   AND TIME(`hour`) > '14:00:00' LIMIT 0, 1000	21 row(s) returned	0.010 sec / 0.000026 sec
 </code>
 
-## 5 Selezionare tutti i corsi di laurea magistrale
+## 6 Selezionare tutti i corsi di laurea magistrale
 
 SELECT *
 FROM `degrees`
@@ -57,3 +57,10 @@ Result:
 <code>15:33:49	SELECT * FROM `degrees` WHERE `level` = "magistrale" LIMIT 0, 1000	38 row(s) returned	0.0014 sec / 0.000029 sec
 </code>
 
+## 7 Da quanti dipartimenti è composta l'università? 
+SELECT COUNT(*) AS `numero_dipartimenti`
+FROM `departments`;
+
+Result: 
+<code>15:36:51	SELECT COUNT(*) AS `numero_dipartimenti` FROM `departments` LIMIT 0, 1000	1 row(s) returned	0.00031 sec / 0.0000060 sec
+</code>
