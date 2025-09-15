@@ -130,3 +130,22 @@ ORDER BY `numero_insegnanti` DESC;
 'Rotonda Teseo 9','2'
 
 </code>
+
+## 3. Calcolare la media dei voti di ogni appello d'esame
+
+SELECT `exam_id`,
+       AVG(`vote`) AS `media_voti`
+FROM `exam_student`
+GROUP BY `exam_id`;
+
+<code>
+
+'1','16.8824'
+'2','16.4615'
+'3','20.3333'
+'4','27.0000'
+'6','17.5000'
+'7','19.6000'
+.......
+.......
+</code>
