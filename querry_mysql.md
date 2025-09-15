@@ -1,3 +1,4 @@
+# S E L E C T 
 ## 1 Selezionare tutti gli studenti nati nel 1990 (160).
 
 SELECT *
@@ -75,3 +76,22 @@ Result:
 <code>15:39:16	SELECT COUNT(*) AS `insegnanti_senza_telefono` FROM `teachers` WHERE `phone` IS NULL LIMIT 0, 1000	1 row(s) returned	0.0051 sec / 0.000012 sec
 </code>
 
+# G R O U P  B Y  
+
+## 1. Contare quanti iscritti ci sono stati ogni anno
+
+SELECT YEAR(`enrolment_date`) AS `anno_iscrizione`,
+       COUNT(*) AS `numero_iscritti`
+FROM `students`
+GROUP BY YEAR(`enrolment_date`)
+ORDER BY `anno_iscrizione`;
+
+Result: 
+<code>
+'2018','912'
+'2019','1709'
+'2020','1645'
+'2021','734'
+15:44:28	SELECT YEAR(`enrolment_date`) AS `anno_iscrizione`,        COUNT(*) AS `numero_iscritti` FROM `students` GROUP BY YEAR(`enrolment_date`) ORDER BY `anno_iscrizione` LIMIT 0, 1000	4 row(s) returned	0.0063 sec / 0.000012 sec
+
+</code>
