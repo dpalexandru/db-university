@@ -63,3 +63,22 @@ ORDER BY `students`.`surname`, `students`.`name`;
 14:57:22	SELECT `students`.`id` AS `id_studente`,        `students`.`surname` AS `cognome`,        `students`.`name` AS `nome`,        `degrees`.`name` AS `corso_di_laurea`,        `departments`.`name` AS `dipartimento` FROM `students` JOIN `degrees`    ON `students`.`degree_id` = `degrees`.`id` JOIN `departments`    ON `degrees`.`department_id` = `departments`.`id` ORDER BY `students`.`surname`, `students`.`name` LIMIT 0, 10000	5000 row(s) returned	0.050 sec / 0.0032 sec
 
 </code>
+
+# 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+SELECT `degrees`.`name` AS `corso_di_laurea`,
+       `courses`.`name` AS `corso`,
+       CONCAT(`teachers`.`name`, ' ', `teachers`.`surname`) AS `insegnante`
+FROM `degrees`
+JOIN `courses` 
+  ON `degrees`.`id` = `courses`.`degree_id`
+JOIN `course_teacher` 
+  ON `courses`.`id` = `course_teacher`.`course_id`
+JOIN `teachers` 
+  ON `course_teacher`.`teacher_id` = `teachers`.`id`
+ORDER BY `degrees`.`name`
+
+<code>
+15:04:57	SELECT `degrees`.`name` AS `corso_di_laurea`,        `courses`.`name` AS `corso`,        CONCAT(`teachers`.`name`, ' ', `teachers`.`surname`) AS `insegnante` FROM `degrees` JOIN `courses`    ON `degrees`.`id` = `courses`.`degree_id` JOIN `course_teacher`    ON `courses`.`id` = `course_teacher`.`course_id` JOIN `teachers`    ON `course_teacher`.`teacher_id` = `teachers`.`id` ORDER BY `degrees`.`name` LIMIT 0, 10000	1317 row(s) returned	0.016 sec / 0.00084 sec
+
+</code>
