@@ -82,3 +82,24 @@ ORDER BY `degrees`.`name`
 15:04:57	SELECT `degrees`.`name` AS `corso_di_laurea`,        `courses`.`name` AS `corso`,        CONCAT(`teachers`.`name`, ' ', `teachers`.`surname`) AS `insegnante` FROM `degrees` JOIN `courses`    ON `degrees`.`id` = `courses`.`degree_id` JOIN `course_teacher`    ON `courses`.`id` = `course_teacher`.`course_id` JOIN `teachers`    ON `course_teacher`.`teacher_id` = `teachers`.`id` ORDER BY `degrees`.`name` LIMIT 0, 10000	1317 row(s) returned	0.016 sec / 0.00084 sec
 
 </code>
+
+# 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+SELECT DISTINCT 
+       CONCAT(`teachers`.`name`, ' ', `teachers`.`surname`) AS `insegnante`,
+       `departments`.`name` AS `dipartimento`
+FROM `teachers`
+JOIN `course_teacher` 
+  ON `teachers`.`id` = `course_teacher`.`teacher_id`
+JOIN `courses` 
+  ON `course_teacher`.`course_id` = `courses`.`id`
+JOIN `degrees` 
+  ON `courses`.`degree_id` = `degrees`.`id`
+JOIN `departments` 
+  ON `degrees`.`department_id` = `departments`.`id`
+WHERE `departments`.`name` = 'Dipartimento di Matematica'
+ORDER BY  `insegnante`
+
+<code>
+15:09:16	SELECT DISTINCT         CONCAT(`teachers`.`name`, ' ', `teachers`.`surname`) AS `insegnante`,        `departments`.`name` AS `dipartimento` FROM `teachers` JOIN `course_teacher`    ON `teachers`.`id` = `course_teacher`.`teacher_id` JOIN `courses`    ON `course_teacher`.`course_id` = `courses`.`id` JOIN `degrees`    ON `courses`.`degree_id` = `degrees`.`id` JOIN `departments`    ON `degrees`.`department_id` = `departments`.`id` WHERE `departments`.`name` = 'Dipartimento di Matematica' ORDER BY  `insegnante` LIMIT 0, 10000	54 row(s) returned	0.0020 sec / 0.000017 sec
+</code>
